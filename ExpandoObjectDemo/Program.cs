@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Dynamic;
 
 namespace ExpandoObjectDemo
@@ -15,6 +16,12 @@ namespace ExpandoObjectDemo
         private static void usingExpandoObject()
         {
             dynamic data = new ExpandoObject();
+
+            (data as INotifyPropertyChanged).PropertyChanged += (sender, e) =>
+            {
+                Console.WriteLine(String.Format("Property {0} has changed.", e.PropertyName));
+            };
+
             data.Name = "Welwid";
             data.Age = 30;
 			// 轉型為IDictionary<string, object>進行操作
