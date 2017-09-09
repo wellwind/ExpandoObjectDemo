@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 
 namespace ExpandoObjectDemo
 {
@@ -8,6 +9,20 @@ namespace ExpandoObjectDemo
         static void Main(string[] args)
         {
             usingDictionary();
+            usingExpandoObject();
+        }
+
+        private static void usingExpandoObject()
+        {
+            dynamic data = new ExpandoObject();
+            data.Name = "Welwid";
+            data.Age = 30;
+            data.Sex = Sex.Male;
+
+            Console.WriteLine("-- ExpandoObject --");
+			Console.WriteLine(String.Format("Name={0}", data.Name));
+			Console.WriteLine(String.Format("Age={0}", data.Age));
+			Console.WriteLine(String.Format("Sex={0}", data.Sex));
         }
 
         private static void usingDictionary()
@@ -17,6 +32,7 @@ namespace ExpandoObjectDemo
             data.Add("Age", 30);
             data["Sex"] = Sex.Male;
 
+            Console.WriteLine("-- Dictionary --");
             Console.WriteLine(String.Format("Name={0}", data["Name"]));
             Console.WriteLine(String.Format("Age={0}", data["Age"]));
             Console.WriteLine(String.Format("Sex={0}", data["Sex"]));
