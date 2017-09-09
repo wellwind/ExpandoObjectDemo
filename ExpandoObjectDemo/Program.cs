@@ -17,12 +17,13 @@ namespace ExpandoObjectDemo
             dynamic data = new ExpandoObject();
             data.Name = "Welwid";
             data.Age = 30;
-            data.Sex = Sex.Male;
+			// 轉型為IDictionary<string, object>進行操作
+			(data as IDictionary<string, object>)["Sex"] = Sex.Male;
 
             Console.WriteLine("-- ExpandoObject --");
-			Console.WriteLine(String.Format("Name={0}", data.Name));
-			Console.WriteLine(String.Format("Age={0}", data.Age));
-			Console.WriteLine(String.Format("Sex={0}", data.Sex));
+            Console.WriteLine(String.Format("Name={0}", data.Name));
+            Console.WriteLine(String.Format("Age={0}", data.Age));
+            Console.WriteLine(String.Format("Sex={0}", data.Sex));
         }
 
         private static void usingDictionary()
